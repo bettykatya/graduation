@@ -1,0 +1,14 @@
+{
+    "places":[
+        {
+            "id": "1_433",
+            "building": "main building",
+            "room": "433"
+        },
+        {
+            "id": "1_422",
+            "building": "main building",
+            "room": "422"
+        }
+    ]
+}

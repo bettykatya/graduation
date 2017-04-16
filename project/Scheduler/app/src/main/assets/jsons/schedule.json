@@ -1,0 +1,63 @@
+{
+    "schedule":[
+        {
+            "course": 1,
+            "groups":[{
+                "group": 1,
+                "subgroup": 1,
+                "schedule":[
+                    {
+                        "weekDay": 1,
+                        "lessons":[
+                            {
+                                "name": "web programming",
+                                "teacher": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35"
+                            },
+                            {
+                                "name": "algebra",
+                                "teacher": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05"
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 2,
+                        "lessons":[
+                            {
+                                "name": "math analysis",
+                                "teacher": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35"
+                            },
+                            {
+                                "name": "c++ programming",
+                                "teacher": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05"
+                            }
+                        ]
+                    }]
+            }]
+    },
+        {
+
+    },
+        {
+
+    },
+        {
+
+    }]
+}
