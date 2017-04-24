@@ -1,8 +1,8 @@
 package com.katlab.scheduler.Model;
 
-/**
- * Created by katya on 4/16/2017.
- */
+import java.util.ArrayList;
 
 public class Course {
+    private int course;
+    private ArrayList <Group> groups;
 }

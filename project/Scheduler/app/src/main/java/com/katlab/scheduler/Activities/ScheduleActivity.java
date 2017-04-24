@@ -1,13 +1,21 @@
 package com.katlab.scheduler.Activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.katlab.scheduler.Adapters.ScheduleAdapter;
+import com.katlab.scheduler.Model.Course;
 import com.katlab.scheduler.Model.Lesson;
+import com.katlab.scheduler.Presenter.DataProvider;
 import com.katlab.scheduler.scheduler.R;
 
 import org.json.JSONArray;
@@ -17,60 +25,58 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleActivity extends AppCompatActivity {
+public class ScheduleActivity extends Activity {
+
+    private ScheduleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("INFO", "started activity");
+        Log.i("INFO", "started ScheduleActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        //ArrayList <Lesson> lessons = getLessons();
+        /*
+        TextView textViewTemp = (TextView) findViewById(R.id.textView4);
+        textViewTemp.setText(DataProvider.getJsonStringSchedule(ScheduleActivity.this));
+        */
 
-        TextView textViewTemp = (TextView) findViewById(R.id.tempTextView);
-        textViewTemp.setText(getJsonStringSchedule());
+        TextView textView = (TextView) findViewById(R.id.textView4);
+        textView.setText("temp text");
 
+        ArrayList <Lesson> lessons = new ArrayList<>();
+        lessons.add(0, new Lesson("Name1", "Building1", "Room1"));
+        lessons.add(1, new Lesson("Name2", "Building2", "Room2"));
+        lessons.add(2, new Lesson("Name3", "Building3", "Room3"));
+        lessons.add(3, new Lesson("Name4", "Building4", "Room4"));
 
-        //ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.list_item_lesson, lessons);
-        //listSchedule.setAdapter(adapter);
-
-
-    }
-
-    private ArrayList <Lesson> getLessons(){
-        ArrayList <Lesson> lessons = new ArrayList<Lesson>();
-
-        try {
-            String scheduleJSONString= getJsonStringSchedule();
-            JSONObject jsonObject = new JSONObject(scheduleJSONString);
-            Log.i("scheduleJSONString", scheduleJSONString);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        Log.i("INFO", "lessons:");
+        for (int i = 0; i < lessons.size(); i++) {
+            Log.i("INFO", "name: " + lessons.get(i).getName());
+            Log.i("INFO", "place: " + lessons.get(i).getPlace());
         }
 
-        return lessons;
+        ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
+        adapter = new ScheduleAdapter(this, lessons);
+        listSchedule.setAdapter(adapter);
+
     }
 
-    private String getJsonStringSchedule(){
-        //File file = new File("src/main/res/jsons/schedule.json");
-        String json = null;
-        try {
-
-            InputStream is = getAssets().open("jsons/schedule.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+    public final AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener(){
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Lesson current_lesson = (Lesson)adapter.getItem(position);
+            openLessonDetailsActivity(current_lesson);
         }
-        return json;
+    };
 
+    public void openLessonDetailsActivity(Lesson lesson){
+        Intent intent = new Intent(this, LessonDetailsActivity.class);
+        intent.putExtra("Lesson", lesson);
+        startActivity(intent);
     }
+
 }

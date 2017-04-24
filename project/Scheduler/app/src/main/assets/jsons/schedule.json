@@ -1,5 +1,5 @@
 {
-    "schedule":[
+    "fullSchedule":[
         {
             "course": 1,
             "groups":[{
@@ -10,42 +10,50 @@
                         "weekDay": 1,
                         "lessons":[
                             {
-                                "name": "web programming",
-                                "teacher": 12345,
+                                "subjectName": "web programming",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
                                 "building": "main",
                                 "room": "433",
                                 "startTime": "8.15",
-                                "endTime": "9.35"
+                                "endTime": "9.35",
+                                "hasHometask": true
                             },
                             {
-                                "name": "algebra",
-                                "teacher": 54723,
+                                "subjectName": "algebra",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
                                 "building": "main",
                                 "room": "421",
                                 "startTime": "9.45",
-                                "endTime": "11.05"
+                                "endTime": "11.05",
+                                "hasHometask": false
                             }
                         ]
 
                     },
                     {
-                        "weekDay": 2,
+                        "weekDay": 13,
                         "lessons":[
                             {
-                                "name": "math analysis",
-                                "teacher": 94658,
+                                "subjectName": "math analysis",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
                                 "building": "main",
                                 "room": "422",
                                 "startTime": "8.15",
-                                "endTime": "9.35"
+                                "endTime": "9.35",
+                                "hasHometask": false
                             },
                             {
-                                "name": "c++ programming",
-                                "teacher": 43856,
+                                "subjectName": "c++ programming",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
                                 "building": "main",
                                 "room": "321",
                                 "startTime": "9.45",
-                                "endTime": "11.05"
+                                "endTime": "11.05",
+                                "hasHometask": true
                             }
                         ]
                     }]
