@@ -18,6 +18,18 @@ public class Lesson implements Serializable {
         return name;
     }
 
+    public String getTeacherName() {
+        return teacher.getName();
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
     public String getPlace() {
         return building + " room " + room;
     }
@@ -28,4 +40,20 @@ public class Lesson implements Serializable {
         this.room = room;
     }
 
+    public Lesson(String name, int teacherID, String building, String room,
+                  String startTime, String endTime, boolean hasHometask){
+        this.name = name;
+        this.building = building;
+        this.room = room;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.hasHometask = hasHometask;
+    }
+
+    @Override
+    public String toString() {
+        return "name = " + name + ", teacher = " + getTeacherName() +
+                ", place = " + getPlace() + ", startTime = " + startTime +
+                ", endTime = " + endTime;
+    }
 }

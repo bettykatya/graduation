@@ -62,13 +62,13 @@ public class ScheduleActivity extends Activity {
         ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
         adapter = new ScheduleAdapter(this, lessons);
         listSchedule.setAdapter(adapter);
-
+        listSchedule.setOnItemClickListener(onItemClickListener);
     }
 
     public final AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener(){
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Lesson current_lesson = (Lesson)adapter.getItem(position);
+            Lesson current_lesson = (Lesson) adapter.getItem(position);
             openLessonDetailsActivity(current_lesson);
         }
     };

@@ -3,8 +3,8 @@
         {
             "course": 1,
             "groups":[{
-                "group": 1,
-                "subgroup": 1,
+                "group": "1",
+                "subgroup": "1",
                 "schedule":[
                     {
                         "weekDay": 1,

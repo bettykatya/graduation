@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
+import com.katlab.scheduler.Presenter.LoginProcessor;
 import com.katlab.scheduler.scheduler.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,7 +18,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void tryLogin(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        EditText etLogin = (EditText) findViewById(R.id.email);
+        EditText etPassword = (EditText) findViewById(R.id.password);
+
+        String login = etLogin.getText().toString();
+        String pass = etPassword.getText().toString();
+
+        if(LoginProcessor.canLogin(this, login, pass)){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
     }
 }

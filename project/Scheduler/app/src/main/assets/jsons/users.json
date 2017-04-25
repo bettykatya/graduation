@@ -1,10 +1,31 @@
 {
-  "id": 12345,
-  "login": "",
-  "password": "",
-  "name": "",
-  "surname": "",
-  "group": "",
-  "subgroup": "",
-  "role": ""
+    "users":[
+        {
+            "id": 12345,
+            "login": "user1",
+            "password": "user1",
+            "name": "user1Name",
+            "surname": "user1Surname",
+            "course": 1,
+            "group": "1",
+            "subgroup": "1",
+            "role": "STUDENT"
+        },
+        {
+            "id": 12346,
+            "login": "teacher1",
+            "password": "teacher1",
+            "name": "teacher1Name",
+            "surname": "teacher1Surname",
+            "role": "TEACHER"
+        },
+        {
+            "id": 12347,
+            "login": "admin1",
+            "password": "admin1",
+            "name": "admin1Name",
+            "surname": "admin1Surname",
+            "role": "ADMIN"
+        }
+    ]
 }
