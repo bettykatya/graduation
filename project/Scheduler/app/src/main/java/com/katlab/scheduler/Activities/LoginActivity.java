@@ -17,8 +17,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
+    //TODO LoginProcesor.tryLogin method from presenter
     public void tryLogin(View view){
-
+/*
         EditText etLogin = (EditText) findViewById(R.id.email);
         EditText etPassword = (EditText) findViewById(R.id.password);
 
@@ -28,7 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         if(LoginProcessor.canLogin(this, login, pass)){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
+        }*/
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 }

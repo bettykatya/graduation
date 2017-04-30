@@ -2,32 +2,20 @@ package com.katlab.scheduler.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.katlab.scheduler.Adapters.ScheduleAdapter;
 import com.katlab.scheduler.Model.Course;
 import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Presenter.DataProvider;
 import com.katlab.scheduler.scheduler.R;
+import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ScheduleActivity extends Activity {
 
@@ -48,10 +36,18 @@ public class ScheduleActivity extends Activity {
         textView.setText("temp text");
 
         ArrayList <Lesson> lessons = new ArrayList<>();
+        /*
         lessons.add(0, new Lesson("Name1", "Building1", "Room1"));
         lessons.add(1, new Lesson("Name2", "Building2", "Room2"));
         lessons.add(2, new Lesson("Name3", "Building3", "Room3"));
         lessons.add(3, new Lesson("Name4", "Building4", "Room4"));
+        */
+
+        //lessons = DatabaseHandler.getAllLessons();
+
+        DatabaseHandler.openDB(this);
+        //ArrayList<Course> courses = DatabaseHandler.getAllCourses();
+
 
         Log.i("INFO", "lessons:");
         for (int i = 0; i < lessons.size(); i++) {

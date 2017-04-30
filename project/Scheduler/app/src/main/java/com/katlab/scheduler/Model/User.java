@@ -3,7 +3,6 @@ package com.katlab.scheduler.Model;
 
 import android.content.Context;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 
 public class User {
@@ -34,6 +33,10 @@ public class User {
         setRole(role);
     }
 
+
+    public int getId() {
+        return id;
+    }
     public String getRole() {
         return role;
     }
@@ -66,12 +69,13 @@ public class User {
         return password;
     }
 
+    //TODO move to presenter
     public GroupSchedule getUserSchedule(Context context){
         if(userSchedule == null){
             ArrayList <Course> courses = FullSchedule.getFullScheduleCourses(context);
             for (int i = 0; i < courses.size(); i++) {
                 Course tempCourse = courses.get(i);
-                if(tempCourse.getCourse() == this.course){
+                if(tempCourse.getCourseNumber() == this.course){
                     ArrayList<GroupSchedule> groups = tempCourse.getGroupSchedules();
                     for (int j = 0; j < groups.size(); j++) {
                         GroupSchedule tempGroupSchedule = groups.get(j);

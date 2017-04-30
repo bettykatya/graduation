@@ -10,6 +10,7 @@
                         "weekDay": 1,
                         "lessons":[
                             {
+                                "lessonID": 1,
                                 "subjectName": "web programming",
                                 "subjectID": 12345,
                                 "teacherID": 12345,
@@ -20,6 +21,7 @@
                                 "hasHometask": true
                             },
                             {
+                                "lessonID": 2,
                                 "subjectName": "algebra",
                                 "subjectID": 12345,
                                 "teacherID": 54723,
@@ -36,6 +38,7 @@
                         "weekDay": 13,
                         "lessons":[
                             {
+                                "lessonID": 3,
                                 "subjectName": "math analysis",
                                 "subjectID": 12345,
                                 "teacherID": 94658,
@@ -46,6 +49,7 @@
                                 "hasHometask": false
                             },
                             {
+                                "lessonID": 3,
                                 "subjectName": "c++ programming",
                                 "subjectID": 12345,
                                 "teacherID": 43856,
@@ -58,14 +62,5 @@
                         ]
                     }]
             }]
-    },
-        {
-
-    },
-        {
-
-    },
-        {
-
     }]
 }

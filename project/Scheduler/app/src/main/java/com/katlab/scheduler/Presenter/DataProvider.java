@@ -31,7 +31,7 @@ public class DataProvider {
                 JSONObject courseJSON = coursesJSON.getJSONObject(i);
                 int courseNumber = courseJSON.getInt("course");
 
-                JSONArray groupsJSON = courseJSON.getJSONArray("groupSchedules");
+                JSONArray groupsJSON = courseJSON.getJSONArray("groups");
                 ArrayList <GroupSchedule> groupSchedules = new ArrayList<>();
                 for (int j = 0; j < groupsJSON.length(); j++) {
                     JSONObject groupJSON = groupsJSON.getJSONObject(j);
@@ -48,6 +48,7 @@ public class DataProvider {
                         ArrayList <Lesson> lessons = new ArrayList<>();
                         for (int l = 0; l < lessonsJSON.length(); l++) {
                             JSONObject lessonJSON = lessonsJSON.getJSONObject(l);
+                            int lessonID = lessonJSON.getInt("lessonID");
                             String lessonName = lessonJSON.getString("subjectName");
                             int subjectID = lessonJSON.getInt("subjectID");
                             int teacherID = lessonJSON.getInt("teacherID");
@@ -57,7 +58,7 @@ public class DataProvider {
                             String endTime = lessonJSON.getString("endTime");
                             boolean hasHometask = lessonJSON.getBoolean("hasHometask");
 
-                            Lesson lesson = new Lesson(lessonName, teacherID, building,
+                            Lesson lesson = new Lesson(lessonID, lessonName, teacherID, building,
                                     room, startTime, endTime, hasHometask);
                             lessons.add(lesson);
                         }
@@ -76,7 +77,6 @@ public class DataProvider {
         }
         return null;
     }
-
     public static ArrayList <User> getRegisteredUsers(Context context){
         ArrayList <User> users = new ArrayList<>();
         try{

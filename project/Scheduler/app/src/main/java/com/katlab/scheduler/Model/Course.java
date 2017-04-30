@@ -12,11 +12,20 @@ public class Course {
         this.groupSchedules = groupSchedules;
     }
 
-    public int getCourse() {
+    public Course(int course){
+        this.course = course;
+        this.groupSchedules = new ArrayList<>();
+    }
+
+    public int getCourseNumber() {
         return course;
     }
 
     public ArrayList<GroupSchedule> getGroupSchedules() {
         return groupSchedules;
+    }
+
+    public void addGroupSchedule(GroupSchedule groupSchedule){
+        this.groupSchedules.add(groupSchedule);
     }
 }
