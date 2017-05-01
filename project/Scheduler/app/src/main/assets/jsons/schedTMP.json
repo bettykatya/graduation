@@ -1,0 +1,285 @@
+{
+    "fullSchedule":[
+        {
+            "course": 1,
+            "groups":[{
+                "group": "group11",
+                "subgroup": "subgroup1",
+                "schedule":[
+                    {
+                        "weekDay": 1,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson1",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson2",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 13,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson3",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": false
+                            },
+                            {
+                                "subjectName": "lesson4",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": true
+                            }
+                        ]
+                    }]
+            },
+            {
+                "group": "group1",
+                "subgroup": "subgroup2",
+                "schedule":[
+                    {
+                        "weekDay": 1,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson5",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson6",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 13,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson7",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": false
+                            },
+                            {
+                                "subjectName": "lesson8",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": true
+                            }
+                        ]
+                    }]
+            },
+            {
+                "group": "group2",
+                "subgroup": "subgroup1",
+                "schedule":[
+                    {
+                        "weekDay": 1,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson9",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson10",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 2,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson11",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": false
+                            },
+                            {
+                                "subjectName": "lesson12",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": true
+                            }
+                        ]
+                    }]
+            }]
+        },
+        {
+            "course": 2,
+            "groups":[{
+                "group": "group1",
+                "subgroup": "subgroup1",
+                "schedule":[
+                    {
+                        "weekDay": 6,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson13",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson14",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 7,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson15",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson16",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 9,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson17",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "lesson18",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 11,
+                        "lessons":[
+                            {
+                                "subjectName": "lesson19",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": false
+                            },
+                            {
+                                "subjectName": "lesson20",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": true
+                            }
+                        ]
+                    }]
+            }]
+        }]
+}

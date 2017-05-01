@@ -3,6 +3,8 @@ package com.katlab.scheduler.Model;
 
 import android.content.Context;
 
+import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+
 import java.util.ArrayList;
 
 public class User {
@@ -69,22 +71,22 @@ public class User {
         return password;
     }
 
+    public int getCourse() {
+        return course;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public String getSubgroup() {
+        return subgroup;
+    }
+
     //TODO move to presenter
     public GroupSchedule getUserSchedule(Context context){
         if(userSchedule == null){
-            ArrayList <Course> courses = FullSchedule.getFullScheduleCourses(context);
-            for (int i = 0; i < courses.size(); i++) {
-                Course tempCourse = courses.get(i);
-                if(tempCourse.getCourseNumber() == this.course){
-                    ArrayList<GroupSchedule> groups = tempCourse.getGroupSchedules();
-                    for (int j = 0; j < groups.size(); j++) {
-                        GroupSchedule tempGroupSchedule = groups.get(j);
-                        if(tempGroupSchedule.getGroup() == this.group && tempGroupSchedule.getSubGroup() == this.subgroup){
-                            this.userSchedule = tempGroupSchedule;
-                        }
-                    }
-                }
-            }
+            userSchedule = DatabaseHandler.getGroupSchedule(course, group, subgroup);
         }
         return this.userSchedule;
     }

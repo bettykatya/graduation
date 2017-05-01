@@ -8,6 +8,7 @@ public interface DatabaseConstants {
     String INTEGER_TYPE = " INTEGER";
     String COMMA_SEP = ",";
 
+    String AND = " AND ";
     String ASC = " ASC";
     String DESC = " DESC";
 
@@ -46,6 +47,6 @@ public interface DatabaseConstants {
     String HAVING = null;
     String ORDER_BY = COLUMN_NAME_LESSON_COURSE + ASC + COMMA_SEP +
             COLUMN_NAME_LESSON_GROUP + ASC + COMMA_SEP +
-            COLUMN_NAME_LESSON_SUBGROUP + ASC +
+            COLUMN_NAME_LESSON_SUBGROUP + ASC + COMMA_SEP +
             COLUMN_NAME_LESSON_WEEKDAY + ASC;
 }

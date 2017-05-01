@@ -7,8 +7,8 @@
             "name": "user1Name",
             "surname": "user1Surname",
             "course": 1,
-            "group": "1",
-            "subgroup": "1",
+            "group": "group11",
+            "subgroup": "subgroup1",
             "role": "STUDENT"
         },
         {
@@ -17,6 +17,9 @@
             "password": "teacher1",
             "name": "teacher1Name",
             "surname": "teacher1Surname",
+            "course": 1,
+            "group": "group1",
+            "subgroup": "subgroup1",
             "role": "TEACHER"
         },
         {
@@ -25,6 +28,9 @@
             "password": "admin1",
             "name": "admin1Name",
             "surname": "admin1Surname",
+            "course": 1,
+            "group": "group1",
+            "subgroup": "subgroup1",
             "role": "ADMIN"
         }
     ]

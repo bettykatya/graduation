@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 
 public class Lesson implements Serializable {
-    private int id;
+        private int id;
     private String name;
     private User teacher;
     private String building;
@@ -26,6 +26,10 @@ public class Lesson implements Serializable {
     public int getTeacherID() {
         return 1;
         //return teacher.getId();
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBuilding() {
@@ -58,9 +62,18 @@ public class Lesson implements Serializable {
         this.room = room;
     }
 
+    public Lesson(String name, int teacherID, String building, String room,
+                  String startTime, String endTime, boolean hasHometask){
+        this.name = name;
+        this.building = building;
+        this.room = room;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.hasHometask = hasHometask;
+    }
     public Lesson(int id, String name, int teacherID, String building, String room,
                   String startTime, String endTime, boolean hasHometask){
-        this.id = id;
+        this.setId(id);
         this.name = name;
         this.building = building;
         this.room = room;
@@ -69,9 +82,10 @@ public class Lesson implements Serializable {
         this.hasHometask = hasHometask;
     }
 
+
     @Override
     public String toString() {
-        return "name = " + name + ", teacher = " + getTeacherName() +
+        return "id = " + id + "name = " + name + ", teacher = " + getTeacherName() +
                 ", place = " + getPlace() + ", startTime = " + startTime +
                 ", endTime = " + endTime;
     }

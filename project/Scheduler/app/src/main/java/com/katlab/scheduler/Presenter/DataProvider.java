@@ -23,7 +23,7 @@ public class DataProvider {
 
     public static ArrayList <Course> getCourses(Context context){
         try {
-            String scheduleJSONString= Utils.getJsonString(context, "jsons/schedule.json");
+            String scheduleJSONString= Utils.getJsonString(context, "jsons/schedTMP.json");
             JSONObject jsonObject = new JSONObject(scheduleJSONString);
             JSONArray coursesJSON = jsonObject.getJSONArray("fullSchedule");
             ArrayList <Course> courses = new ArrayList<>();
@@ -48,7 +48,6 @@ public class DataProvider {
                         ArrayList <Lesson> lessons = new ArrayList<>();
                         for (int l = 0; l < lessonsJSON.length(); l++) {
                             JSONObject lessonJSON = lessonsJSON.getJSONObject(l);
-                            int lessonID = lessonJSON.getInt("lessonID");
                             String lessonName = lessonJSON.getString("subjectName");
                             int subjectID = lessonJSON.getInt("subjectID");
                             int teacherID = lessonJSON.getInt("teacherID");
@@ -58,7 +57,7 @@ public class DataProvider {
                             String endTime = lessonJSON.getString("endTime");
                             boolean hasHometask = lessonJSON.getBoolean("hasHometask");
 
-                            Lesson lesson = new Lesson(lessonID, lessonName, teacherID, building,
+                            Lesson lesson = new Lesson(lessonName, teacherID, building,
                                     room, startTime, endTime, hasHometask);
                             lessons.add(lesson);
                         }

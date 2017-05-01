@@ -52,9 +52,6 @@ public class ScheduleAdapter extends BaseAdapter {
 
         Lesson lesson = getLesson(position);
 
-        Log.i("INFO", "getView name: " + lesson.getName());
-        Log.i("INFO", "getView name: " + lesson.getPlace());
-
         ((TextView) view.findViewById(R.id.textViewLessonName)).setText(lesson.getName());
         ((TextView) view.findViewById(R.id.textViewLessonPlace)).setText(lesson.getPlace());
 

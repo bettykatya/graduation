@@ -10,7 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.katlab.scheduler.Adapters.ScheduleAdapter;
+import com.katlab.scheduler.Model.App;
 import com.katlab.scheduler.Model.Course;
+import com.katlab.scheduler.Model.DaySchedule;
+import com.katlab.scheduler.Model.GroupSchedule;
 import com.katlab.scheduler.Model.Lesson;
 import com.katlab.scheduler.scheduler.R;
 import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
@@ -33,26 +36,14 @@ public class ScheduleActivity extends Activity {
         */
 
         TextView textView = (TextView) findViewById(R.id.textView4);
-        textView.setText("temp text");
+        textView.setText("current user is " + App.getCurrentUser().getName());
 
-        ArrayList <Lesson> lessons = new ArrayList<>();
-        /*
-        lessons.add(0, new Lesson("Name1", "Building1", "Room1"));
-        lessons.add(1, new Lesson("Name2", "Building2", "Room2"));
-        lessons.add(2, new Lesson("Name3", "Building3", "Room3"));
-        lessons.add(3, new Lesson("Name4", "Building4", "Room4"));
-        */
-
-        //lessons = DatabaseHandler.getAllLessons();
-
-        DatabaseHandler.openDB(this);
-        //ArrayList<Course> courses = DatabaseHandler.getAllCourses();
-
-
-        Log.i("INFO", "lessons:");
+        ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), 1);
+        Log.i("INFO", "lessons size = " + lessons.size());
         for (int i = 0; i < lessons.size(); i++) {
-            Log.i("INFO", "name: " + lessons.get(i).getName());
-            Log.i("INFO", "place: " + lessons.get(i).getPlace());
+            Log.i("INFO", "lesson from activity" + lessons.get(i));
+            //Log.i("INFO", "name: " + lessons.get(i).getName());
+            //Log.i("INFO", "place: " + lessons.get(i).getPlace());
         }
 
         ListView listSchedule = (ListView) findViewById(R.id.listSchedule);

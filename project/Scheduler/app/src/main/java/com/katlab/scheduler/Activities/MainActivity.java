@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
 
+import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+import com.katlab.scheduler.Presenter.DataProvider;
 import com.katlab.scheduler.scheduler.R;
 
 public class MainActivity extends ActivityGroup {
@@ -14,6 +16,9 @@ public class MainActivity extends ActivityGroup {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DatabaseHandler.openDB(this);
+        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getCourses(this));
 
         //TODO add switching tabs by swipe gesture
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);

@@ -21,6 +21,7 @@ public class DaySchedule {
     public void addLesson(Lesson lesson){
         this.lessons.add(lesson);
     }
+
     public void addLessons(ArrayList<Lesson> newLessons){
         for (int i = 0; i < newLessons.size(); i++) {
             this.lessons.add(newLessons.get(i));

@@ -10,7 +10,6 @@
                         "weekDay": 1,
                         "lessons":[
                             {
-                                "lessonID": 1,
                                 "subjectName": "web programming",
                                 "subjectID": 12345,
                                 "teacherID": 12345,
@@ -21,7 +20,6 @@
                                 "hasHometask": true
                             },
                             {
-                                "lessonID": 2,
                                 "subjectName": "algebra",
                                 "subjectID": 12345,
                                 "teacherID": 54723,
@@ -38,7 +36,6 @@
                         "weekDay": 13,
                         "lessons":[
                             {
-                                "lessonID": 3,
                                 "subjectName": "math analysis",
                                 "subjectID": 12345,
                                 "teacherID": 94658,
@@ -49,7 +46,6 @@
                                 "hasHometask": false
                             },
                             {
-                                "lessonID": 3,
                                 "subjectName": "c++ programming",
                                 "subjectID": 12345,
                                 "teacherID": 43856,
@@ -62,5 +58,64 @@
                         ]
                     }]
             }]
-    }]
+    },
+        {
+            "course": 2,
+            "groups":[{
+                "group": "3",
+                "subgroup": "5",
+                "schedule":[
+                    {
+                        "weekDay": 6,
+                        "lessons":[
+                            {
+                                "subjectName": "web programming",
+                                "subjectID": 12345,
+                                "teacherID": 12345,
+                                "building": "main",
+                                "room": "433",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": true
+                            },
+                            {
+                                "subjectName": "algebra",
+                                "subjectID": 12345,
+                                "teacherID": 54723,
+                                "building": "main",
+                                "room": "421",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": false
+                            }
+                        ]
+
+                    },
+                    {
+                        "weekDay": 11,
+                        "lessons":[
+                            {
+                                "subjectName": "math analysis",
+                                "subjectID": 12345,
+                                "teacherID": 94658,
+                                "building": "main",
+                                "room": "422",
+                                "startTime": "8.15",
+                                "endTime": "9.35",
+                                "hasHometask": false
+                            },
+                            {
+                                "subjectName": "c++ programming",
+                                "subjectID": 12345,
+                                "teacherID": 43856,
+                                "building": "main",
+                                "room": "321",
+                                "startTime": "9.45",
+                                "endTime": "11.05",
+                                "hasHometask": true
+                            }
+                        ]
+                    }]
+            }]
+        }]
 }
