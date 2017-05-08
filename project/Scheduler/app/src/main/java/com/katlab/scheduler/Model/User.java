@@ -4,6 +4,7 @@ package com.katlab.scheduler.Model;
 import android.content.Context;
 
 import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+import com.katlab.scheduler.Helpers.Utils;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,6 @@ public class User {
     private String group;
     private String subgroup;
 
-    private GroupSchedule userSchedule;
 
     public User(int id, String login, String password, String name, String surname, int course,
                 String group, String subgroup, String role){
@@ -74,21 +74,14 @@ public class User {
     public int getCourse() {
         return course;
     }
-
     public String getGroup() {
         return group;
     }
-
     public String getSubgroup() {
         return subgroup;
     }
 
-    //TODO move to presenter
-    public GroupSchedule getUserSchedule(Context context){
-        if(userSchedule == null){
-            userSchedule = DatabaseHandler.getGroupSchedule(course, group, subgroup);
-        }
-        return this.userSchedule;
+    public String getGroupsString(){
+        return getCourse() + Utils.GROUP_DELIMETER + getGroup() + Utils.GROUP_DELIMETER + getSubgroup();
     }
-
 }

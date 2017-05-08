@@ -18,7 +18,7 @@ public class MainActivity extends ActivityGroup {
         setContentView(R.layout.activity_main);
 
         DatabaseHandler.openDB(this);
-        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getCourses(this));
+        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this));
 
         //TODO add switching tabs by swipe gesture
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
@@ -27,7 +27,6 @@ public class MainActivity extends ActivityGroup {
         TabHost.TabSpec tabSpec;
         tabSpec = tabHost.newTabSpec("tag1");
         tabSpec.setIndicator("Расписание");
-        //tabSpec.setContent(R.id.tab1);
         tabSpec.setContent(new Intent(this, ScheduleActivity.class));
         tabHost.addTab(tabSpec);
 

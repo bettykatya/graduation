@@ -47,7 +47,7 @@ public class ScheduleAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.list_item_lesson, parent, false);
+            view = layoutInflater.inflate(R.layout.item_list_lesson, parent, false);
         }
 
         Lesson lesson = getLesson(position);

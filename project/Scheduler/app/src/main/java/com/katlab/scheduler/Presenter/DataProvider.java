@@ -1,81 +1,21 @@
 package com.katlab.scheduler.Presenter;
 
 import android.content.Context;
-import android.provider.SyncStateContract;
 import android.util.Log;
 
 import com.katlab.scheduler.Helpers.Utils;
-import com.katlab.scheduler.Model.Course;
-import com.katlab.scheduler.Model.GroupSchedule;
 import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Model.DaySchedule;
 import com.katlab.scheduler.Model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class DataProvider {
 
-    public static ArrayList <Course> getCourses(Context context){
-        try {
-            String scheduleJSONString= Utils.getJsonString(context, "jsons/schedTMP.json");
-            JSONObject jsonObject = new JSONObject(scheduleJSONString);
-            JSONArray coursesJSON = jsonObject.getJSONArray("fullSchedule");
-            ArrayList <Course> courses = new ArrayList<>();
-            for (int i = 0; i < coursesJSON.length(); i++) {
-                JSONObject courseJSON = coursesJSON.getJSONObject(i);
-                int courseNumber = courseJSON.getInt("course");
-
-                JSONArray groupsJSON = courseJSON.getJSONArray("groups");
-                ArrayList <GroupSchedule> groupSchedules = new ArrayList<>();
-                for (int j = 0; j < groupsJSON.length(); j++) {
-                    JSONObject groupJSON = groupsJSON.getJSONObject(j);
-                    String groupNumber = groupJSON.getString("group");
-                    String subgroupNumber = groupJSON.getString("subgroup");
-
-                    JSONArray schedulesJSON = groupJSON.getJSONArray("schedule");
-                    ArrayList <DaySchedule> daySchedules = new ArrayList<>();
-                    for (int k = 0; k < schedulesJSON.length(); k++) {
-                        JSONObject dayScheduleJSON = schedulesJSON.getJSONObject(k);
-                        int weekDayNumber = dayScheduleJSON.getInt("weekDay");
-
-                        JSONArray lessonsJSON = dayScheduleJSON.getJSONArray("lessons");
-                        ArrayList <Lesson> lessons = new ArrayList<>();
-                        for (int l = 0; l < lessonsJSON.length(); l++) {
-                            JSONObject lessonJSON = lessonsJSON.getJSONObject(l);
-                            String lessonName = lessonJSON.getString("subjectName");
-                            int subjectID = lessonJSON.getInt("subjectID");
-                            int teacherID = lessonJSON.getInt("teacherID");
-                            String building = lessonJSON.getString("building");
-                            String room = lessonJSON.getString("room");
-                            String startTime = lessonJSON.getString("startTime");
-                            String endTime = lessonJSON.getString("endTime");
-                            boolean hasHometask = lessonJSON.getBoolean("hasHometask");
-
-                            Lesson lesson = new Lesson(lessonName, teacherID, building,
-                                    room, startTime, endTime, hasHometask);
-                            lessons.add(lesson);
-                        }
-                        DaySchedule daySchedule = new DaySchedule(weekDayNumber, lessons);
-                        daySchedules.add(daySchedule);
-                    }
-                    GroupSchedule groupSchedule = new GroupSchedule(groupNumber, subgroupNumber, daySchedules);
-                    groupSchedules.add(groupSchedule);
-                }
-                Course course = new Course(courseNumber, groupSchedules);
-                courses.add(course);
-            }
-            return courses;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
     public static ArrayList <User> getRegisteredUsers(Context context){
         ArrayList <User> users = new ArrayList<>();
         try{
@@ -102,5 +42,48 @@ public class DataProvider {
             e.printStackTrace();
         }
         return users;
+    }
+    public static ArrayList<Lesson> getAllLessonsFromJSON(Context context){
+        ArrayList <Lesson> lessons = new ArrayList<>();
+        try{
+            String JSONString= Utils.getJsonString(context, "jsons/lessons.json");
+            JSONObject jsonObject = new JSONObject(JSONString);
+            Log.i("INFO", jsonObject.keys().next());
+            JSONArray usersJSON = jsonObject.getJSONArray("lessons");
+            for (int i = 0; i < usersJSON.length(); i++) {
+                JSONObject tempUserJSON = usersJSON.getJSONObject(i);
+                String id = tempUserJSON.getString("id");
+                String subjectName = tempUserJSON.getString("subjectName");
+                int teacherID = tempUserJSON.getInt("teacherID");
+
+                String building = tempUserJSON.getString("building");
+                String room = tempUserJSON.getString("room");
+
+                String startTime = tempUserJSON.getString("startTime");
+                String endTime = tempUserJSON.getString("endTime");
+                boolean hasHometask = tempUserJSON.getBoolean("hasHometask");
+
+                JSONArray weekdaysJSON = tempUserJSON.getJSONArray("weekdays");
+                ArrayList<Integer> weekdays = new ArrayList<>();
+                for (int j = 0; j < weekdaysJSON.length(); j++) {
+                    Integer day = weekdaysJSON.getInt(j);
+                    weekdays.add(day);
+                }
+
+                JSONArray groupsJSON = tempUserJSON.getJSONArray("groups");
+                ArrayList<String> groups = new ArrayList<>();
+                for (int j = 0; j < groupsJSON.length(); j++) {
+                    String group = groupsJSON.getString(j);
+                    groups.add(group);
+                }
+
+                Lesson lesson = new Lesson(id, subjectName, teacherID, building, room,
+                        startTime, endTime, hasHometask, weekdays, groups);
+                lessons.add(lesson);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return lessons;
     }
 }

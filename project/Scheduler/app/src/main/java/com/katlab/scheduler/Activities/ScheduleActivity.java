@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import com.katlab.scheduler.Adapters.ScheduleAdapter;
 import com.katlab.scheduler.Model.App;
-import com.katlab.scheduler.Model.Course;
-import com.katlab.scheduler.Model.DaySchedule;
-import com.katlab.scheduler.Model.GroupSchedule;
 import com.katlab.scheduler.Model.Lesson;
 import com.katlab.scheduler.scheduler.R;
 import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
@@ -30,20 +27,11 @@ public class ScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        /*
-        TextView textViewTemp = (TextView) findViewById(R.id.textView4);
-        textViewTemp.setText(DataProvider.getJsonStringSchedule(ScheduleActivity.this));
-        */
-
-        TextView textView = (TextView) findViewById(R.id.textView4);
-        textView.setText("current user is " + App.getCurrentUser().getName());
-
-        ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), 1);
+        int today = 1;//TODO change day recognition for method
+        ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), today);
         Log.i("INFO", "lessons size = " + lessons.size());
         for (int i = 0; i < lessons.size(); i++) {
             Log.i("INFO", "lesson from activity" + lessons.get(i));
-            //Log.i("INFO", "name: " + lessons.get(i).getName());
-            //Log.i("INFO", "place: " + lessons.get(i).getPlace());
         }
 
         ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
