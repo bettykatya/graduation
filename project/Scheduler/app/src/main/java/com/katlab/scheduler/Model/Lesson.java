@@ -1,6 +1,7 @@
 package com.katlab.scheduler.Model;
 
 import com.katlab.scheduler.Model.User;
+import com.katlab.scheduler.Presenter.LoginProcessor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,12 +28,10 @@ public class Lesson implements Serializable {
     }
 
     public String getTeacherName() {
-        return "teachername";
-        //return teacher.getName();
+        return teacher.getSurname() + " " + teacher.getName();
     }
     public int getTeacherID() {
-        return 1;
-        //return teacher.getId();
+        return teacher.getId();
     }
 
     public String getWeekdaysString() {
@@ -90,6 +89,7 @@ public class Lesson implements Serializable {
                   ArrayList<Integer> weekdays, ArrayList<String> groups){
         this.setId(id);
         this.name = name;
+        this.teacher = LoginProcessor.getUserById(teacherID);
         this.building = building;
         this.room = room;
         this.startTime = startTime;

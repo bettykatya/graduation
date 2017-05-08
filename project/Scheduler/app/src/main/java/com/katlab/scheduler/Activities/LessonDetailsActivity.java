@@ -25,10 +25,10 @@ public class LessonDetailsActivity extends AppCompatActivity {
         TextView tvLessonHasTask = (TextView) findViewById(R.id.textViewLessonHasTask);
 
         tvLessonName.setText(lesson.getName());
-        //tvLessonTeacher.setText(lesson.getTeacherName());
+        tvLessonTeacher.setText(lesson.getTeacherName());
         tvLessonPlace.setText(lesson.getPlace());
-        //tvLessonStartTime.setText(lesson.getStartTime());
-        //tvLessonEndTime.setText(lesson.getEndTime());
+        tvLessonStartTime.setText(lesson.getStartTime());
+        tvLessonEndTime.setText(lesson.getEndTime());
 
     }
 }

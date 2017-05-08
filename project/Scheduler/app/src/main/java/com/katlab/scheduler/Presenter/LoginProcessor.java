@@ -31,4 +31,12 @@ public class LoginProcessor {
         return flag;
     }
 
+    public static User getUserById(int id){
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == id){
+                return users.get(i);
+            }
+        }
+        return new User();
+    }
 }

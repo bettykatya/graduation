@@ -1,36 +1,46 @@
 {
     "users":[
         {
-            "id": 12345,
+            "id": 11111,
             "login": "user1",
             "password": "user1",
-            "name": "user1Name",
-            "surname": "user1Surname",
+            "name": "Иван",
+            "surname": "Иванов",
             "course": 1,
             "group": "group1",
             "subgroup": "subgroup1",
             "role": "STUDENT"
         },
         {
-            "id": 12346,
+            "id": 21111,
             "login": "teacher1",
             "password": "teacher1",
-            "name": "teacher1Name",
-            "surname": "teacher1Surname",
-            "course": 1,
-            "group": "group1",
-            "subgroup": "subgroup1",
+            "name": "Василий Михайлович",
+            "surname": "Волков",
             "role": "TEACHER"
         },
         {
-            "id": 12347,
+            "id": 21112,
+            "login": "teacher2",
+            "password": "teacher2",
+            "name": "Сергей Павлович",
+            "surname": "Сташуленок",
+            "role": "TEACHER"
+        },
+        {
+            "id": 21113,
+            "login": "teacher3",
+            "password": "teacher3",
+            "name": "Ольга Исааковна",
+            "surname": "Пиндрик",
+            "role": "TEACHER"
+        },
+        {
+            "id": 31111,
             "login": "admin1",
             "password": "admin1",
             "name": "admin1Name",
             "surname": "admin1Surname",
-            "course": 1,
-            "group": "group1",
-            "subgroup": "subgroup1",
             "role": "ADMIN"
         }
     ]

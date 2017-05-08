@@ -6,9 +6,10 @@ import android.content.Context;
 import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
 import com.katlab.scheduler.Helpers.Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable{
 
     private int id;
     private String login;
@@ -21,6 +22,9 @@ public class User {
     private String group;
     private String subgroup;
 
+    public User(){
+
+    }
 
     public User(int id, String login, String password, String name, String surname, int course,
                 String group, String subgroup, String role){
@@ -59,6 +63,9 @@ public class User {
     }
     public String getName() {
         return name;
+    }
+    public String getSurname() {
+        return surname;
     }
     public void setName(String name) {
         this.name = name;

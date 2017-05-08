@@ -30,9 +30,9 @@ public class DataProvider {
                 String password = tempUserJSON.getString("password");
                 String name = tempUserJSON.getString("name");
                 String surname = tempUserJSON.getString("surname");
-                int course = tempUserJSON.getInt("course");
-                String group = tempUserJSON.getString("group");
-                String subgroup = tempUserJSON.getString("subgroup");
+                int course = tempUserJSON.optInt("course");
+                String group = tempUserJSON.optString("group");
+                String subgroup = tempUserJSON.optString("subgroup");
                 String role = tempUserJSON.getString("role");
 
                 User user = new User(id, login, password, name, surname, course, group, subgroup, role);
@@ -41,6 +41,7 @@ public class DataProvider {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.i("INFO", "number of registered users is " + users.size());
         return users;
     }
     public static ArrayList<Lesson> getAllLessonsFromJSON(Context context){
