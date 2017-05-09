@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.katlab.scheduler.Helpers.Utils;
 import com.katlab.scheduler.Model.Lesson;
+import com.katlab.scheduler.Model.Material;
 import com.katlab.scheduler.Model.User;
 
 import org.json.JSONArray;
@@ -84,5 +85,26 @@ public class DataProvider {
             e.printStackTrace();
         }
         return lessons;
+    }
+    public static ArrayList <Material> getAllMaterials(Context context){
+        ArrayList <Material> materials = new ArrayList<>();
+        try{
+            String JSONString= Utils.getJsonString(context, "jsons/materials.json");
+            JSONObject jsonObject = new JSONObject(JSONString);
+            JSONArray usersJSON = jsonObject.getJSONArray("materials");
+            for (int i = 0; i < usersJSON.length(); i++) {
+                JSONObject tempUserJSON = usersJSON.getJSONObject(i);
+                String lessonID = tempUserJSON.getString("lessonID");
+                String name = tempUserJSON.getString("name");
+                String file = tempUserJSON.getString("file");
+
+                Material material = new Material(lessonID, name, file);
+                materials.add(material);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("INFO", "number of materials is " + materials.size());
+        return materials;
     }
 }

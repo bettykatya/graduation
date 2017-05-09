@@ -9,6 +9,7 @@ import android.util.Log;
 import com.katlab.scheduler.Helpers.Utils;
 import com.katlab.scheduler.Model.Lesson;
 import com.katlab.scheduler.Model.LessonComparator;
+import com.katlab.scheduler.Model.Material;
 import com.katlab.scheduler.Model.Roles;
 import com.katlab.scheduler.Model.User;
 
@@ -28,12 +29,17 @@ public class DatabaseHandler implements DatabaseConstants {
         dbHelper.close();
     }
 
-
-    public static void initializeDatabaseDataFromJSON(ArrayList<Lesson> lessons){
+    public static void initializeDatabaseDataFromJSON(ArrayList<Lesson> lessons, ArrayList<Material> materials){
         db.delete(TABLE_LESSONS_NAME, null, null);
         for (int i = 0; i < lessons.size(); i++) {
             Lesson currentLesson = lessons.get(i);
             addLesson(currentLesson);
+        }
+
+        db.delete(TABLE_MATERIALS_NAME, null, null);
+        for (int i = 0; i < materials.size(); i++) {
+            Material currentMaterial = materials.get(i);
+            addMaterial(currentMaterial);
         }
     }
 
@@ -55,7 +61,6 @@ public class DatabaseHandler implements DatabaseConstants {
 
         db.insert(TABLE_LESSONS_NAME, null, values);
     }
-
     public static ArrayList <Lesson> getUserLessonsForDay(User user, int weekDay){
         Log.i("INFO", "role = " + user.getRole());
         if(user.getRole().equals(Roles.STUDENT)){
@@ -65,7 +70,6 @@ public class DatabaseHandler implements DatabaseConstants {
         }
         return new ArrayList<>();
     }
-
     private static ArrayList <Lesson> getStudentLessonsForDay(User user, int weekDay){
         ArrayList <Lesson> lessons = new ArrayList<>();
         Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
@@ -83,7 +87,6 @@ public class DatabaseHandler implements DatabaseConstants {
                             continue;
                         }
 
-                        Log.i("INFO", "adding lesson");
                         String lessonID = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ID));
                         String lessonName = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_NAME));
                         int lessonTeacherID = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_TEACHER_ID));
@@ -111,7 +114,6 @@ public class DatabaseHandler implements DatabaseConstants {
         Collections.sort(lessons, new LessonComparator());
         return lessons;
     }
-
     private static ArrayList <Lesson> getTeacherLessonsForDay(User teacher, int weekDay){
 
         ArrayList <Lesson> lessons = new ArrayList<>();
@@ -125,8 +127,6 @@ public class DatabaseHandler implements DatabaseConstants {
 
                         String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
                         ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
-
-                        Log.i("INFO", " weekdaysString " + weekdaysString + " lessonTeacherID " + lessonTeacherID);
 
                         if(!weekdays.contains(weekDay) || lessonTeacherID != teacher.getId()){
                             continue;
@@ -161,5 +161,15 @@ public class DatabaseHandler implements DatabaseConstants {
         }
         Collections.sort(lessons, new LessonComparator());
         return lessons;
+    }
+
+    private static void addMaterial(Material material){
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME_MATERIAL_ID, material.getId());
+        values.put(COLUMN_NAME_MATERIAL_LESSON_ID, material.getLessonID());
+        values.put(COLUMN_NAME_MATERIAL_NAME, material.getName());
+        values.put(COLUMN_NAME_MATERIAL_FILE, material.getFile());
+
+        db.insert(TABLE_MATERIALS_NAME, null, values);
     }
 }

@@ -18,7 +18,7 @@ public class MainActivity extends ActivityGroup {
         setContentView(R.layout.activity_main);
 
         DatabaseHandler.openDB(this);
-        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this));
+        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this), DataProvider.getAllMaterials(this));
 
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());
@@ -31,7 +31,7 @@ public class MainActivity extends ActivityGroup {
 
         tabSpec = tabHost.newTabSpec("tag2");
         tabSpec.setIndicator("Материалы");
-        tabSpec.setContent(R.id.tab2);
+        tabSpec.setContent(new Intent(this, MaterialsActivity.class));
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tag3");

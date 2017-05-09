@@ -20,16 +20,25 @@ public interface DatabaseConstants {
     String COLUMN_NAME_LESSON_START_TIME = "lessonStartTime";
     String COLUMN_NAME_LESSON_END_TIME = "lessonEndTime";
     String COLUMN_NAME_LESSON_HAS_TASK = "lessonHasTask";
-
     String COLUMN_NAME_LESSON_WEEKDAYS= "lessonWeekday";
     String COLUMN_NAME_LESSON_GROUPS = "lessonGroup";
 
-    //variables for queries
     String [] COLUMNS_LESSONS = {
             COLUMN_NAME_LESSON_ID,COLUMN_NAME_LESSON_NAME,COLUMN_NAME_LESSON_TEACHER_ID,
             COLUMN_NAME_LESSON_BUILDING,COLUMN_NAME_LESSON_ROOM,COLUMN_NAME_LESSON_START_TIME,
             COLUMN_NAME_LESSON_END_TIME, COLUMN_NAME_LESSON_HAS_TASK,
             COLUMN_NAME_LESSON_WEEKDAYS, COLUMN_NAME_LESSON_GROUPS};
+
+
+    String TABLE_MATERIALS_NAME = "materials";
+    String COLUMN_NAME_MATERIAL_ID = "materialID";
+    String COLUMN_NAME_MATERIAL_NAME = "materialName";
+    String COLUMN_NAME_MATERIAL_LESSON_ID = "materialLessonID";
+    String COLUMN_NAME_MATERIAL_FILE = "materialFile";
+
+    String [] COLUMNS_MATERIALS = {COLUMN_NAME_MATERIAL_ID, COLUMN_NAME_MATERIAL_NAME,
+            COLUMN_NAME_MATERIAL_LESSON_ID, COLUMN_NAME_MATERIAL_FILE};
+
     String SELECTION = null;
     String[] SELECTION_ARGS = null;
     String GROUP_BY = null;

@@ -24,7 +24,6 @@ public class ScheduleActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("INFO", "started ScheduleActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 

@@ -1,0 +1,34 @@
+{
+    "materials":[
+        {
+            "lessonID": "math.stat.lect.1",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        },
+        {
+            "lessonID": "math.stat.lect.1",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        },
+        {
+            "lessonID": "math.stat.lect.1",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        },
+        {
+            "lessonID": "math.stat.prac.1",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        },
+        {
+            "lessonID": "math.stat.prac.1",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        },
+        {
+            "lessonID": "2",
+            "name": "hometask",
+            "file": "files/hometask1.txt"
+        }
+    ]
+}
