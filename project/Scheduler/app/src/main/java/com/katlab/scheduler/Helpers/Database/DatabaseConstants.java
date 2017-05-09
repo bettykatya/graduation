@@ -24,13 +24,6 @@ public interface DatabaseConstants {
     String COLUMN_NAME_LESSON_WEEKDAYS= "lessonWeekday";
     String COLUMN_NAME_LESSON_GROUPS = "lessonGroup";
 
-    String TABLE_USERS_NAME = "users";
-    String COLUMN_NAME_USER_ID = "userID";
-    String COLUMN_NAME_USER_NAME = "userName";
-    String COLUMN_NAME_USER_SURNAME = "userSurname";
-    String COLUMN_NAME_USER_LOGIN = "userLogin";
-    String COLUMN_NAME_USER_PASSWORD = "userPassword";
-
     //variables for queries
     String [] COLUMNS_LESSONS = {
             COLUMN_NAME_LESSON_ID,COLUMN_NAME_LESSON_NAME,COLUMN_NAME_LESSON_TEACHER_ID,

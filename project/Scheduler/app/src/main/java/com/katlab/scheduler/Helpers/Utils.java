@@ -37,9 +37,7 @@ public class Utils {
     public static ArrayList<Integer> getWeekdaysFromString(String weekdaysString){
         ArrayList<Integer> weekdays = new ArrayList<>();
         String [] array = weekdaysString.split(STRING_DELIMETER);
-        Log.i("INFO", "weekdaysString = " + weekdaysString);
         for (int i = 1; i < array.length; i++) {
-            Log.i("INFO", "array[i] = " + array[i]);
             weekdays.add(Integer.parseInt(array[i]));
         }
         return weekdays;

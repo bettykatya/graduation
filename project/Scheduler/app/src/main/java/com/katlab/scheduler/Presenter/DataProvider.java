@@ -21,7 +21,6 @@ public class DataProvider {
         try{
             String JSONString= Utils.getJsonString(context, "jsons/users.json");
             JSONObject jsonObject = new JSONObject(JSONString);
-            Log.i("INFO", jsonObject.keys().next());
             JSONArray usersJSON = jsonObject.getJSONArray("users");
             for (int i = 0; i < usersJSON.length(); i++) {
                 JSONObject tempUserJSON = usersJSON.getJSONObject(i);
@@ -49,7 +48,6 @@ public class DataProvider {
         try{
             String JSONString= Utils.getJsonString(context, "jsons/lessons.json");
             JSONObject jsonObject = new JSONObject(JSONString);
-            Log.i("INFO", jsonObject.keys().next());
             JSONArray usersJSON = jsonObject.getJSONArray("lessons");
             for (int i = 0; i < usersJSON.length(); i++) {
                 JSONObject tempUserJSON = usersJSON.getJSONObject(i);

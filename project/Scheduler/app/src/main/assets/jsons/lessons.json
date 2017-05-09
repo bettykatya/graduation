@@ -1,18 +1,6 @@
 {
     "lessons":[
         {
-            "id": "num.meth.lect.1",
-            "subjectName": "Численные методы",
-            "teacherID": 21111,
-            "building": "Главный корпус",
-            "room": "ауд.433",
-            "startTime": "14.30",
-            "endTime": "15.50",
-            "hasHometask": true,
-            "weekdays": [1,8],
-            "groups": ["1-group1-subgroup1", "1-group1-subgroup2", "1-group3-subgroup1" ]
-        },
-        {
             "id": "math.stat.lect.1",
             "subjectName": "Математическая статистика (л)",
             "teacherID": 21112,
@@ -21,7 +9,19 @@
             "startTime": "16.00",
             "endTime": "17.20",
             "hasHometask": true,
-            "weekdays": [1,8],
+            "weekdays": [1,9],
+            "groups": ["1-group1-subgroup1", "1-group1-subgroup2", "1-group3-subgroup1" ]
+        },
+        {
+            "id": "num.meth.lect.1",
+            "subjectName": "Численные методы",
+            "teacherID": 21111,
+            "building": "Главный корпус",
+            "room": "ауд.433",
+            "startTime": "14.30",
+            "endTime": "15.50",
+            "hasHometask": true,
+            "weekdays": [1,9],
             "groups": ["1-group1-subgroup1", "1-group1-subgroup2", "1-group3-subgroup1" ]
         },
         {
@@ -33,7 +33,7 @@
             "startTime": "17.30",
             "endTime": "18.50",
             "hasHometask": true,
-            "weekdays": [1],
+            "weekdays": [1,9],
             "groups": ["1-group1-subgroup1", "1-group1-subgroup2", "1-group3-subgroup1" ]
         },
         {

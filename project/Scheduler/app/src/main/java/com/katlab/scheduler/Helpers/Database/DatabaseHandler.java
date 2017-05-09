@@ -8,9 +8,11 @@ import android.util.Log;
 
 import com.katlab.scheduler.Helpers.Utils;
 import com.katlab.scheduler.Model.Lesson;
+import com.katlab.scheduler.Model.LessonComparator;
 import com.katlab.scheduler.Model.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DatabaseHandler implements DatabaseConstants {
     private static DatabaseHelper dbHelper;
@@ -51,7 +53,6 @@ public class DatabaseHandler implements DatabaseConstants {
         values.put(COLUMN_NAME_LESSON_GROUPS, lesson.getGroupsString());
 
         db.insert(TABLE_LESSONS_NAME, null, values);
-        Log.i("INFO", "inserted lesson: " + lesson);
     }
 
     public static ArrayList <Lesson> getUserLessonsForDay(User user, int weekDay){
@@ -97,6 +98,7 @@ public class DatabaseHandler implements DatabaseConstants {
             }
             c.close();
         }
+        Collections.sort(lessons, new LessonComparator());
         return lessons;
     }
 

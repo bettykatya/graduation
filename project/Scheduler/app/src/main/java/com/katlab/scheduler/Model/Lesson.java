@@ -1,15 +1,19 @@
 package com.katlab.scheduler.Model;
 
+import android.support.annotation.NonNull;
+
 import com.katlab.scheduler.Model.User;
 import com.katlab.scheduler.Presenter.LoginProcessor;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.katlab.scheduler.Helpers.Utils.STRING_DELIMETER;
 
 
-public class Lesson implements Serializable {
+public class Lesson implements Serializable, Comparable {
     private String id;
     private String name;
     private User teacher;
@@ -68,7 +72,7 @@ public class Lesson implements Serializable {
         return endTime;
     }
     public String getPlace() {
-        return building + " room " + room;
+        return building + " " + room;
     }
     public Lesson(String name, String building, String room){
         this.name = name;
@@ -104,5 +108,29 @@ public class Lesson implements Serializable {
         return "id = " + id + "name = " + name + ", teacher = " + getTeacherName() +
                 ", place = " + getPlace() + ", startTime = " + startTime +
                 ", endTime = " + endTime;
+    }
+
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+
+        try{
+            Lesson object = (Lesson) o;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("hh.mm");
+            Date currentStartTime = dateFormat.parse(this.startTime);
+            Date objectStartTime = dateFormat.parse(object.getStartTime());
+
+            if(currentStartTime.equals(objectStartTime)){
+                return 0;
+            } else if(currentStartTime.after(objectStartTime)){
+                return 1;
+            } else if (currentStartTime.before(objectStartTime)){
+                return -1;
+            }
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

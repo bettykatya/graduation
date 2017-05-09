@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.katlab.scheduler.Adapters.ScheduleAdapter;
+import com.katlab.scheduler.Helpers.DateHelper;
 import com.katlab.scheduler.Model.App;
 import com.katlab.scheduler.Model.Lesson;
 import com.katlab.scheduler.scheduler.R;
@@ -27,12 +28,13 @@ public class ScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        int today = 1;//TODO change day recognition for method
+        int today = DateHelper.getTodayNumber();//TODO change day recognition for method
         ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), today);
+        /*
         Log.i("INFO", "lessons size = " + lessons.size());
         for (int i = 0; i < lessons.size(); i++) {
             Log.i("INFO", "lesson from activity" + lessons.get(i));
-        }
+        }*/
 
         ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
         adapter = new ScheduleAdapter(this, lessons);
