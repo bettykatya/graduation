@@ -9,6 +9,7 @@ import android.util.Log;
 import com.katlab.scheduler.Helpers.Utils;
 import com.katlab.scheduler.Model.Lesson;
 import com.katlab.scheduler.Model.LessonComparator;
+import com.katlab.scheduler.Model.Roles;
 import com.katlab.scheduler.Model.User;
 
 import java.util.ArrayList;
@@ -56,7 +57,16 @@ public class DatabaseHandler implements DatabaseConstants {
     }
 
     public static ArrayList <Lesson> getUserLessonsForDay(User user, int weekDay){
+        Log.i("INFO", "role = " + user.getRole());
+        if(user.getRole().equals(Roles.STUDENT)){
+            return getStudentLessonsForDay(user, weekDay);
+        } else if(user.getRole().equals(Roles.TEACHER)){
+            return getTeacherLessonsForDay(user, weekDay);
+        }
+        return new ArrayList<>();
+    }
 
+    private static ArrayList <Lesson> getStudentLessonsForDay(User user, int weekDay){
         ArrayList <Lesson> lessons = new ArrayList<>();
         Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
 
@@ -102,4 +112,54 @@ public class DatabaseHandler implements DatabaseConstants {
         return lessons;
     }
 
+    private static ArrayList <Lesson> getTeacherLessonsForDay(User teacher, int weekDay){
+
+        ArrayList <Lesson> lessons = new ArrayList<>();
+        Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        int lessonTeacherID = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_TEACHER_ID));
+
+                        String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
+                        ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
+
+                        Log.i("INFO", " weekdaysString " + weekdaysString + " lessonTeacherID " + lessonTeacherID);
+
+                        if(!weekdays.contains(weekDay) || lessonTeacherID != teacher.getId()){
+                            continue;
+                        }
+
+
+                        String groupsString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_GROUPS));
+                        ArrayList<String> groups = Utils.getGroupsFromString(groupsString);
+
+                        String lessonID = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ID));
+                        String lessonName = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_NAME));
+                        String lessonBuilding = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_BUILDING));
+                        String lessonRoom = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ROOM));
+                        String lessonStartTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_START_TIME));
+                        String lessonEndTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_END_TIME));
+
+                        int lessonHasTask = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_HAS_TASK));
+                        boolean hasTask = false;
+                        if(lessonHasTask != 0) {
+                            hasTask = true;
+                        }
+
+                        Lesson currentLesson = new Lesson(lessonID, lessonName, lessonTeacherID, lessonBuilding,
+                                lessonRoom, lessonStartTime, lessonEndTime, hasTask, weekdays, groups);
+                        lessons.add(currentLesson);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        Collections.sort(lessons, new LessonComparator());
+        return lessons;
+    }
 }

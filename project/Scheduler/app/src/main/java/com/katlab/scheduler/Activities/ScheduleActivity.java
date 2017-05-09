@@ -28,13 +28,7 @@ public class ScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
 
-        int today = DateHelper.getTodayNumber();//TODO change day recognition for method
-        ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), today);
-        /*
-        Log.i("INFO", "lessons size = " + lessons.size());
-        for (int i = 0; i < lessons.size(); i++) {
-            Log.i("INFO", "lesson from activity" + lessons.get(i));
-        }*/
+        ArrayList <Lesson> lessons = DatabaseHandler.getUserLessonsForDay(App.getCurrentUser(), DateHelper.getTodayNumber());
 
         ListView listSchedule = (ListView) findViewById(R.id.listSchedule);
         adapter = new ScheduleAdapter(this, lessons);

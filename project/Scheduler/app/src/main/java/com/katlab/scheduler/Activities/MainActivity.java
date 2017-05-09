@@ -20,7 +20,6 @@ public class MainActivity extends ActivityGroup {
         DatabaseHandler.openDB(this);
         DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this));
 
-        //TODO add switching tabs by swipe gesture
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());
 

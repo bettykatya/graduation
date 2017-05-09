@@ -48,17 +48,17 @@ public class User implements Serializable{
     }
     private void setRole(String role) {
         switch (role.toUpperCase()){
-            case "USER":
-                this.role = "USER";
+            case "STUDENT":
+                this.role = Roles.STUDENT;
                 break;
             case "TEACHER":
-                this.role = "ADMIN";
+                this.role = Roles.TEACHER;
                 break;
             case "ADMIN":
-                this.role = "ADMIN";
+                this.role = Roles.ADMIN;
                 break;
             default:
-                this.role = "USER";
+                this.role = Roles.STUDENT;
         }
     }
     public String getName() {
