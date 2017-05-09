@@ -162,6 +162,100 @@ public class DatabaseHandler implements DatabaseConstants {
         Collections.sort(lessons, new LessonComparator());
         return lessons;
     }
+    public static Lesson getLessonById(String id){
+        Lesson lesson = null;
+        Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        String lessonID = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ID));
+                        if(!lessonID.equals(id)){
+                            continue;
+                        }
+
+                        String groupsString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_GROUPS));
+                        ArrayList<String> groups = Utils.getGroupsFromString(groupsString);
+
+                        String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
+                        ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
+
+                        String lessonName = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_NAME));
+                        int lessonTeacherID = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_TEACHER_ID));
+                        String lessonBuilding = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_BUILDING));
+                        String lessonRoom = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ROOM));
+                        String lessonStartTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_START_TIME));
+                        String lessonEndTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_END_TIME));
+
+                        int lessonHasTask = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_HAS_TASK));
+                        boolean hasTask = false;
+                        if(lessonHasTask != 0) {
+                            hasTask = true;
+                        }
+
+                        lesson = new Lesson(lessonID, lessonName, lessonTeacherID, lessonBuilding,
+                                lessonRoom, lessonStartTime, lessonEndTime, hasTask, weekdays, groups);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        return lesson;
+    }
+    public static ArrayList <Lesson> getAllUniqueLessons(){
+        ArrayList <Lesson> lessons = new ArrayList<>();
+        Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        String groupsString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_GROUPS));
+                        ArrayList<String> groups = Utils.getGroupsFromString(groupsString);
+
+                        String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
+                        ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
+
+                        String lessonID = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ID));
+                        String lessonName = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_NAME));
+                        int lessonTeacherID = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_TEACHER_ID));
+                        String lessonBuilding = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_BUILDING));
+                        String lessonRoom = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ROOM));
+                        String lessonStartTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_START_TIME));
+                        String lessonEndTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_END_TIME));
+
+                        int lessonHasTask = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_HAS_TASK));
+                        boolean hasTask = false;
+                        if(lessonHasTask != 0) {
+                            hasTask = true;
+                        }
+
+                        boolean hasLesson = false;
+                        for (int i = 0; i < lessons.size(); i++) {
+                            if (lessons.get(i).getId().equals(lessonID)){
+                                hasLesson = true;
+                            }
+                        }
+                        if(hasLesson){
+                            continue;
+                        }
+
+                        Lesson currentLesson = new Lesson(lessonID, lessonName, lessonTeacherID, lessonBuilding,
+                                lessonRoom, lessonStartTime, lessonEndTime, hasTask, weekdays, groups);
+                        lessons.add(currentLesson);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        Collections.sort(lessons, new LessonComparator());
+        return lessons;
+    }
 
     private static void addMaterial(Material material){
         ContentValues values = new ContentValues();
@@ -171,5 +265,56 @@ public class DatabaseHandler implements DatabaseConstants {
         values.put(COLUMN_NAME_MATERIAL_FILE, material.getFile());
 
         db.insert(TABLE_MATERIALS_NAME, null, values);
+    }
+    public static ArrayList<Material> getAllMaterials(){
+        ArrayList <Material> materials = new ArrayList<>();
+        Cursor c = db.query( TABLE_MATERIALS_NAME, COLUMNS_MATERIALS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        int materialID = c.getInt(c.getColumnIndex(COLUMN_NAME_MATERIAL_ID));
+                        String materialName = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_NAME));
+                        String materialLessonID = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_LESSON_ID));
+                        String materialFile = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_FILE));
+
+                        Material currentMaterial = new Material(materialID, materialLessonID, materialName, materialFile);
+                        materials.add(currentMaterial);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        return materials;
+    }
+    public static ArrayList<Material> getMaterialsForLesson(String lessonId){
+        ArrayList <Material> materials = new ArrayList<>();
+        Cursor c = db.query( TABLE_MATERIALS_NAME, COLUMNS_MATERIALS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        String materialLessonID = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_LESSON_ID));
+                        if(!materialLessonID.equals(lessonId)){
+                            continue;
+                        }
+                        int materialID = c.getInt(c.getColumnIndex(COLUMN_NAME_MATERIAL_ID));
+                        String materialName = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_NAME));
+                        String materialFile = c.getString(c.getColumnIndex(COLUMN_NAME_MATERIAL_FILE));
+
+                        Material currentMaterial = new Material(materialID, materialLessonID, materialName, materialFile);
+                        materials.add(currentMaterial);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        return materials;
     }
 }

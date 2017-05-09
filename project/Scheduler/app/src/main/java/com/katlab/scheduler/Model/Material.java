@@ -1,6 +1,8 @@
 package com.katlab.scheduler.Model;
 
 
+import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+
 public class Material {
     private int id;
     private String lessonID;
@@ -15,6 +17,13 @@ public class Material {
         this.file = file;
         this.id = number;
         number++;
+    }
+
+    public Material(int id, String lessonID, String name, String file){
+        this.lessonID = lessonID;
+        this.name = name;
+        this.file = file;
+        this.id = id;
     }
 
 
@@ -32,5 +41,9 @@ public class Material {
 
     public String getFile() {
         return file;
+    }
+
+    public Lesson getLesson(){
+        return DatabaseHandler.getLessonById(this.lessonID);
     }
 }

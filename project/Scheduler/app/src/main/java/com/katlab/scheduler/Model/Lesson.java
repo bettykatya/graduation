@@ -14,6 +14,10 @@ import static com.katlab.scheduler.Helpers.Utils.STRING_DELIMETER;
 
 
 public class Lesson implements Serializable, Comparable {
+    public String getId() {
+        return id;
+    }
+
     private String id;
     private String name;
     private User teacher;
