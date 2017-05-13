@@ -2,32 +2,32 @@
     "materials":[
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask",
+            "name": "hometask1",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask",
+            "name": "hometask2",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask",
+            "name": "hometask3",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "math.stat.prac.1",
-            "name": "hometask",
+            "name": "hometask11",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "math.stat.prac.1",
-            "name": "hometask",
+            "name": "hometask22",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "2",
-            "name": "hometask",
+            "name": "hometask333",
             "file": "files/hometask1.txt"
         }
     ]

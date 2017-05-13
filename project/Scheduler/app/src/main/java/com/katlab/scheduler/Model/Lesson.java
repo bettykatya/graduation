@@ -1,6 +1,7 @@
 package com.katlab.scheduler.Model;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.katlab.scheduler.Model.User;
 import com.katlab.scheduler.Presenter.LoginProcessor;
@@ -10,13 +11,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.katlab.scheduler.Helpers.Utils.GROUP_DELIMETER;
 import static com.katlab.scheduler.Helpers.Utils.STRING_DELIMETER;
 
 
 public class Lesson implements Serializable, Comparable {
-    public String getId() {
-        return id;
-    }
 
     private String id;
     private String name;
@@ -34,7 +33,6 @@ public class Lesson implements Serializable, Comparable {
     public String getName() {
         return name;
     }
-
     public String getTeacherName() {
         return teacher.getSurname() + " " + teacher.getName();
     }
@@ -60,11 +58,20 @@ public class Lesson implements Serializable, Comparable {
     public void setId(String id) {
         this.id = id;
     }
+    public String getId() {
+        return id;
+    }
     public String getBuilding() {
         return building;
     }
+    public void setBuilding(String building) {
+        this.building = building;
+    }
     public String getRoom() {
         return room;
+    }
+    public void setRoom(String room) {
+        this.room = room;
     }
     public boolean hasTask(){
         return hasHometask;
@@ -72,26 +79,19 @@ public class Lesson implements Serializable, Comparable {
     public String getStartTime() {
         return startTime;
     }
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
     public String getEndTime() {
         return endTime;
+    }
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
     public String getPlace() {
         return building + " " + room;
     }
-    public Lesson(String name, String building, String room){
-        this.name = name;
-        this.building = building;
-        this.room = room;
-    }
-    public Lesson(String name, int teacherID, String building, String room,
-                  String startTime, String endTime, boolean hasHometask){
-        this.name = name;
-        this.building = building;
-        this.room = room;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.hasHometask = hasHometask;
-    }
+
     public Lesson(String id, String name, int teacherID, String building, String room,
                   String startTime, String endTime, boolean hasHometask,
                   ArrayList<Integer> weekdays, ArrayList<String> groups){
@@ -136,5 +136,19 @@ public class Lesson implements Serializable, Comparable {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    public String getAllGroupsFullString(){
+        String result = "";
+        String endLine = "\n";
+        for (int i = 0; i < groups.size(); i++) {
+            String groupStr = groups.get(i);
+            Log.i("INFO", "groupStr = " + groupStr);
+            String [] arr= groupStr.split(GROUP_DELIMETER);
+            Log.i("INFO", "length = " + arr.length);
+            result += arr[0] + " курс, " + arr[1] + " группа, подгруппа " + arr[2] + endLine;
+        }
+        Log.i("INFO", result);
+         return result;
     }
 }

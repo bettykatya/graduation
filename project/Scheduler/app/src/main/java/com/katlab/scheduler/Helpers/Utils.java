@@ -46,7 +46,7 @@ public class Utils {
     public static ArrayList<String> getGroupsFromString(String groupsString){
         ArrayList<String> groups = new ArrayList<>();
         String [] array = groupsString.split(STRING_DELIMETER);
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             groups.add(array[i]);
         }
         return groups;

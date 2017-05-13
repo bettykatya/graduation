@@ -47,6 +47,18 @@
             "hasHometask": true,
             "weekdays": [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
             "groups": ["2-group1-subgroup1", "2-group1-subgroup2", "3-group3-subgroup1" ]
+        },
+        {
+            "id": "2",
+            "subjectName": "lesson2",
+            "teacherID": 12346,
+            "building": "Главный корпус",
+            "room": "ауд.433",
+            "startTime": "19.00",
+            "endTime": "20.20",
+            "hasHometask": true,
+            "weekdays": [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+            "groups": ["2-group1-subgroup1", "2-group1-subgroup2", "3-group3-subgroup1" ]
         }
     ]
 }

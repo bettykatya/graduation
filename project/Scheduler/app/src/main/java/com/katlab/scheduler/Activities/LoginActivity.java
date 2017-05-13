@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+import com.katlab.scheduler.Presenter.DataProvider;
 import com.katlab.scheduler.Presenter.LoginProcessor;
 import com.katlab.scheduler.scheduler.R;
 
@@ -26,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         String pass = etPassword.getText().toString();
 
         if(LoginProcessor.canLogin(this, login, pass)){
+            DatabaseHandler.openDB(this);
+            DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this), DataProvider.getAllMaterials(this));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

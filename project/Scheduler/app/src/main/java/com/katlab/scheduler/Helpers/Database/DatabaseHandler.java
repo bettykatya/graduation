@@ -45,6 +45,7 @@ public class DatabaseHandler implements DatabaseConstants {
 
     private static void addLesson(Lesson lesson){
         ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME_LESSON_ID, lesson.getId());
         values.put(COLUMN_NAME_LESSON_NAME, lesson.getName());
         values.put(COLUMN_NAME_LESSON_TEACHER_ID, lesson.getTeacherID());
         values.put(COLUMN_NAME_LESSON_BUILDING, lesson.getBuilding());
@@ -61,6 +62,17 @@ public class DatabaseHandler implements DatabaseConstants {
 
         db.insert(TABLE_LESSONS_NAME, null, values);
     }
+    private static void deleteLesson(Lesson lesson){
+        String id = lesson.getId();
+        String where =  " " + COLUMN_NAME_LESSON_ID + "='" + id + "'";
+        db.delete(TABLE_LESSONS_NAME, where, null );
+    }
+    public static void editLesson(Lesson oldLesson, Lesson newLesson){
+        deleteLesson(oldLesson);
+        addLesson(newLesson);
+    }
+
+
     public static ArrayList <Lesson> getUserLessonsForDay(User user, int weekDay){
         Log.i("INFO", "role = " + user.getRole());
         if(user.getRole().equals(Roles.STUDENT)){
@@ -205,7 +217,17 @@ public class DatabaseHandler implements DatabaseConstants {
         }
         return lesson;
     }
-    public static ArrayList <Lesson> getAllUniqueLessons(){
+
+    public static ArrayList <Lesson> getAllUniqueLessons(User user){
+        Log.i("INFO", "role = " + user.getRole());
+        if(user.getRole().equals(Roles.STUDENT)){
+            return getAllUniqueLessonsForStudent(user);
+        } else if(user.getRole().equals(Roles.TEACHER)){
+            return getAllUniqueLessonsForTeacher(user);
+        }
+        return new ArrayList<>();
+    }
+    private static ArrayList <Lesson> getAllUniqueLessonsForStudent(User user){
         ArrayList <Lesson> lessons = new ArrayList<>();
         Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
 
@@ -215,6 +237,10 @@ public class DatabaseHandler implements DatabaseConstants {
                     try {
                         String groupsString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_GROUPS));
                         ArrayList<String> groups = Utils.getGroupsFromString(groupsString);
+
+                        if(!groups.contains(user.getGroupsString())){
+                            continue;
+                        }
 
                         String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
                         ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
@@ -237,6 +263,63 @@ public class DatabaseHandler implements DatabaseConstants {
                         for (int i = 0; i < lessons.size(); i++) {
                             if (lessons.get(i).getId().equals(lessonID)){
                                 hasLesson = true;
+                                break;
+                            }
+                        }
+                        if(hasLesson){
+                            continue;
+                        }
+
+                        Lesson currentLesson = new Lesson(lessonID, lessonName, lessonTeacherID, lessonBuilding,
+                                lessonRoom, lessonStartTime, lessonEndTime, hasTask, weekdays, groups);
+                        lessons.add(currentLesson);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (c.moveToNext());
+            }
+            c.close();
+        }
+        Collections.sort(lessons, new LessonComparator());
+        return lessons;
+    }
+    private static ArrayList <Lesson> getAllUniqueLessonsForTeacher(User teacher){
+        ArrayList <Lesson> lessons = new ArrayList<>();
+        Cursor c = db.query( TABLE_LESSONS_NAME, COLUMNS_LESSONS, SELECTION, SELECTION_ARGS, GROUP_BY, HAVING, ORDER_BY);
+
+        if(c != null){
+            if(c.moveToFirst()){
+                do {
+                    try {
+                        String groupsString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_GROUPS));
+                        ArrayList<String> groups = Utils.getGroupsFromString(groupsString);
+
+                        String weekdaysString = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_WEEKDAYS));
+                        ArrayList<Integer> weekdays = Utils.getWeekdaysFromString(weekdaysString);
+
+                        String lessonID = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ID));
+                        String lessonName = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_NAME));
+                        int lessonTeacherID = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_TEACHER_ID));
+                        String lessonBuilding = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_BUILDING));
+                        String lessonRoom = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_ROOM));
+                        String lessonStartTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_START_TIME));
+                        String lessonEndTime = c.getString(c.getColumnIndex(COLUMN_NAME_LESSON_END_TIME));
+
+                        if(lessonTeacherID != teacher.getId()){
+                            continue;
+                        }
+
+                        int lessonHasTask = c.getInt(c.getColumnIndex(COLUMN_NAME_LESSON_HAS_TASK));
+                        boolean hasTask = false;
+                        if(lessonHasTask != 0) {
+                            hasTask = true;
+                        }
+
+                        boolean hasLesson = false;
+                        for (int i = 0; i < lessons.size(); i++) {
+                            if (lessons.get(i).getId().equals(lessonID)){
+                                hasLesson = true;
+                                break;
                             }
                         }
                         if(hasLesson){

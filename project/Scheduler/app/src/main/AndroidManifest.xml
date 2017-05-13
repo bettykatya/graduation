@@ -22,6 +22,10 @@
         </activity>
         <activity android:name="com.katlab.scheduler.Activities.MaterialsActivity">
         </activity>
+        <activity android:name="com.katlab.scheduler.Activities.MaterialDetailsActivity">
+        </activity>
+        <activity android:name="com.katlab.scheduler.Activities.EditLessonActivity">
+        </activity>
     </application>
 
 </manifest>

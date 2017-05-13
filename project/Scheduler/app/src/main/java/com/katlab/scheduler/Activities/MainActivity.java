@@ -17,15 +17,12 @@ public class MainActivity extends ActivityGroup {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DatabaseHandler.openDB(this);
-        DatabaseHandler.initializeDatabaseDataFromJSON(DataProvider.getAllLessonsFromJSON(this), DataProvider.getAllMaterials(this));
-
         TabHost tabHost = (TabHost) findViewById(R.id.tabHost);
         tabHost.setup(this.getLocalActivityManager());
 
         TabHost.TabSpec tabSpec;
         tabSpec = tabHost.newTabSpec("tag1");
-        tabSpec.setIndicator("Расписание");
+        tabSpec.setIndicator("Занятия");
         tabSpec.setContent(new Intent(this, ScheduleActivity.class));
         tabHost.addTab(tabSpec);
 
