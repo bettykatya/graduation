@@ -2,28 +2,28 @@
     "materials":[
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask1",
+            "name": "Домашнее задание",
             "file": "files/hometask1.txt"
         },
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask2",
-            "file": "files/hometask1.txt"
+            "name": "Лекция 1",
+            "file": "files/hometask2.txt"
         },
         {
             "lessonID": "math.stat.lect.1",
-            "name": "hometask3",
-            "file": "files/hometask1.txt"
+            "name": "Лекция 2",
+            "file": "files/hometask3.txt"
         },
         {
             "lessonID": "math.stat.prac.1",
-            "name": "hometask11",
-            "file": "files/hometask1.txt"
+            "name": "Задания",
+            "file": "files/hometask4.txt"
         },
         {
             "lessonID": "math.stat.prac.1",
-            "name": "hometask22",
-            "file": "files/hometask1.txt"
+            "name": "Примеры решения",
+            "file": "files/hometask5.txt"
         },
         {
             "lessonID": "2",
