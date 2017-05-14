@@ -1,4 +1,6 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.adds;
+
+import com.katlab.scheduler.model.objects.Lesson;
 
 import java.util.Comparator;
 

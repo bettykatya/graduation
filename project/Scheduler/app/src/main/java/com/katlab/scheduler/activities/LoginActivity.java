@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Presenter.DataProvider;
-import com.katlab.scheduler.Presenter.LoginProcessor;
+import com.katlab.scheduler.presenter.DatabaseHandler;
+import com.katlab.scheduler.presenter.DataProvider;
+import com.katlab.scheduler.presenter.LoginProcessor;
 import com.katlab.scheduler.scheduler.R;
 
 public class LoginActivity extends AppCompatActivity {

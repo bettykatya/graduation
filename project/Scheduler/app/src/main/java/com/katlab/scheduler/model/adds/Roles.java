@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.adds;
 
 public class Roles {
     public static final String STUDENT = "STUDENT";

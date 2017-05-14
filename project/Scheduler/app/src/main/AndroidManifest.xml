@@ -8,23 +8,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.katlab.scheduler.Activities.LoginActivity">
+        <activity android:name="com.katlab.scheduler.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.katlab.scheduler.Activities.ScheduleActivity"/>
-        <activity android:name="com.katlab.scheduler.Activities.MainActivity">
+        <activity android:name="com.katlab.scheduler.activities.ScheduleActivity"/>
+        <activity android:name="com.katlab.scheduler.activities.MainActivity">
         </activity>
-        <activity android:name="com.katlab.scheduler.Activities.LessonDetailsActivity">
+        <activity android:name="com.katlab.scheduler.activities.LessonDetailsActivity">
         </activity>
-        <activity android:name="com.katlab.scheduler.Activities.MaterialsActivity">
+        <activity android:name="com.katlab.scheduler.activities.MaterialsActivity">
         </activity>
-        <activity android:name="com.katlab.scheduler.Activities.MaterialDetailsActivity">
+        <activity android:name="com.katlab.scheduler.activities.MaterialDetailsActivity">
         </activity>
-        <activity android:name="com.katlab.scheduler.Activities.EditLessonActivity">
+        <activity android:name="com.katlab.scheduler.activities.EditLessonActivity">
         </activity>
     </application>
 

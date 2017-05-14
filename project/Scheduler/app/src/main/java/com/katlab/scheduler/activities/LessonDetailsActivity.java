@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Model.App;
-import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Model.Material;
-import com.katlab.scheduler.Model.Roles;
+import com.katlab.scheduler.presenter.DatabaseHandler;
+import com.katlab.scheduler.model.app.App;
+import com.katlab.scheduler.model.objects.Lesson;
+import com.katlab.scheduler.model.objects.Material;
+import com.katlab.scheduler.model.adds.Roles;
 import com.katlab.scheduler.scheduler.R;
 
 public class LessonDetailsActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Model.Lesson;
+import com.katlab.scheduler.presenter.DatabaseHandler;
+import com.katlab.scheduler.model.objects.Lesson;
 import com.katlab.scheduler.scheduler.R;
 
 public class EditLessonActivity extends AppCompatActivity {

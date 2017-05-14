@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Helpers.Database;
+package com.katlab.scheduler.presenter;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,12 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.katlab.scheduler.Helpers.Utils;
-import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Model.LessonComparator;
-import com.katlab.scheduler.Model.Material;
-import com.katlab.scheduler.Model.Roles;
-import com.katlab.scheduler.Model.User;
+import com.katlab.scheduler.model.adds.Utils;
+import com.katlab.scheduler.model.database.DatabaseConstants;
+import com.katlab.scheduler.model.database.DatabaseHelper;
+import com.katlab.scheduler.model.objects.Lesson;
+import com.katlab.scheduler.model.adds.LessonComparator;
+import com.katlab.scheduler.model.objects.Material;
+import com.katlab.scheduler.model.adds.Roles;
+import com.katlab.scheduler.model.objects.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,7 +73,6 @@ public class DatabaseHandler implements DatabaseConstants {
         deleteLesson(oldLesson);
         addLesson(newLesson);
     }
-
 
     public static ArrayList <Lesson> getUserLessonsForDay(User user, int weekDay){
         Log.i("INFO", "role = " + user.getRole());

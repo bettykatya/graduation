@@ -1,18 +1,17 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.objects;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.katlab.scheduler.Model.User;
-import com.katlab.scheduler.Presenter.LoginProcessor;
+import com.katlab.scheduler.presenter.LoginProcessor;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.katlab.scheduler.Helpers.Utils.GROUP_DELIMETER;
-import static com.katlab.scheduler.Helpers.Utils.STRING_DELIMETER;
+import static com.katlab.scheduler.model.adds.Utils.GROUP_DELIMETER;
+import static com.katlab.scheduler.model.adds.Utils.STRING_DELIMETER;
 
 
 public class Lesson implements Serializable, Comparable {

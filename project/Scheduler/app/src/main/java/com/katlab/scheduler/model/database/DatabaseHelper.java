@@ -1,4 +1,4 @@
-package com.katlab.scheduler.Helpers.Database;
+package com.katlab.scheduler.model.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

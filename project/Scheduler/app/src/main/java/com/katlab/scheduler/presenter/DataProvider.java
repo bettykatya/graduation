@@ -1,19 +1,18 @@
-package com.katlab.scheduler.Presenter;
+package com.katlab.scheduler.presenter;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.katlab.scheduler.Helpers.Utils;
-import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Model.Material;
-import com.katlab.scheduler.Model.User;
+import com.katlab.scheduler.model.adds.Utils;
+import com.katlab.scheduler.model.objects.Lesson;
+import com.katlab.scheduler.model.objects.Material;
+import com.katlab.scheduler.model.objects.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 public class DataProvider {
 

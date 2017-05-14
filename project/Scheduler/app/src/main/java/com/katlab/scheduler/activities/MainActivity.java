@@ -1,13 +1,11 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.app.ActivityGroup;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Presenter.DataProvider;
 import com.katlab.scheduler.scheduler.R;
 
 public class MainActivity extends ActivityGroup {

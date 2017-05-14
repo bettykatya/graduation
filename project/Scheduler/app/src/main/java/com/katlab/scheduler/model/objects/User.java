@@ -1,13 +1,10 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.objects;
 
 
-import android.content.Context;
-
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Helpers.Utils;
+import com.katlab.scheduler.model.adds.Utils;
+import com.katlab.scheduler.model.adds.Roles;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class User implements Serializable{
 

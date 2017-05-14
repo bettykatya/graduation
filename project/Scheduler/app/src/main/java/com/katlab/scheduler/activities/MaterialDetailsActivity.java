@@ -1,12 +1,10 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
-import com.katlab.scheduler.Model.Lesson;
-import com.katlab.scheduler.Model.Material;
+import com.katlab.scheduler.model.objects.Material;
 import com.katlab.scheduler.scheduler.R;
 
 public class MaterialDetailsActivity extends AppCompatActivity {
@@ -18,7 +16,6 @@ public class MaterialDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_material_details);
         material = (Material) getIntent().getSerializableExtra("Material");
-
 
         displayMaterialContent();
     }

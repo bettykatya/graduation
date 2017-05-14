@@ -1,13 +1,10 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.objects;
 
 
 import android.content.Context;
-import android.util.Log;
 
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+import com.katlab.scheduler.presenter.DatabaseHandler;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;

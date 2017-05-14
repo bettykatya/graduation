@@ -1,5 +1,7 @@
-package com.katlab.scheduler.Model;
+package com.katlab.scheduler.model.app;
 
+
+import com.katlab.scheduler.model.objects.User;
 
 public class App {
     private static User current_user;

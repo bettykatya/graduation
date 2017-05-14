@@ -1,8 +1,8 @@
-package com.katlab.scheduler.Helpers;
+package com.katlab.scheduler.model.adds;
 
 import android.util.Log;
 
-import com.katlab.scheduler.Model.Settings;
+import com.katlab.scheduler.model.app.Settings;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +22,6 @@ public class DateHelper {
     }
 
     private static int getCurrentWeekNumber(){
-        Log.i("INFO", "getFirstDayOfWeek = " + Calendar.getInstance().getFirstDayOfWeek());
         return calendar.get(Calendar.WEEK_OF_YEAR);
     }
 
@@ -37,7 +36,6 @@ public class DateHelper {
         int startWeek = Settings.START_WEEK_NUMBER;
         int currentWeek = getCurrentWeekNumber();
         int currentWeekday = getCurrentWeekdayNumber();
-        Log.i("INFO", "startWeek = " + startWeek + " currentWeek = " + currentWeek + " currentWeekday = " + currentWeekday);
 
         if((startWeek%2 == 0 && currentWeek%2 == 0) || (startWeek%2 == 1 && currentWeek%2 == 1)){
             today = currentWeekday;
@@ -45,7 +43,6 @@ public class DateHelper {
             today = currentWeekday + 7;
         }
 
-        Log.i("INFO", "today = " + today);
         return today;
     }
 

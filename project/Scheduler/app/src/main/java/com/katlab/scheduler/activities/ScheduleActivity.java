@@ -1,20 +1,18 @@
-package com.katlab.scheduler.Activities;
+package com.katlab.scheduler.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.katlab.scheduler.Adapters.ScheduleAdapter;
-import com.katlab.scheduler.Helpers.DateHelper;
-import com.katlab.scheduler.Model.App;
-import com.katlab.scheduler.Model.Lesson;
+import com.katlab.scheduler.presenter.adapters.ScheduleAdapter;
+import com.katlab.scheduler.model.adds.DateHelper;
+import com.katlab.scheduler.model.app.App;
+import com.katlab.scheduler.model.objects.Lesson;
 import com.katlab.scheduler.scheduler.R;
-import com.katlab.scheduler.Helpers.Database.DatabaseHandler;
+import com.katlab.scheduler.presenter.DatabaseHandler;
 
 import java.util.ArrayList;
 
